@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    url: "jdbc:mysql://${MYSQL_HOST:localhost}:${MYSQL_PORT:3306}/ratings?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8&createDatabaseIfNotExist=true&useSSL=false"
+    username: "${DB_USER:root}"
+    password: "${DB_PASSWORD:}"
+    continueOnError: true
+    driver-class-name: "com.mysql.cj.jdbc.Driver"
+    hikari:
+      connection-test-query: "SELECT 1"
+      minimum-idle: 2
+      maximum-pool-size: 50
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5Dialect
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: false
