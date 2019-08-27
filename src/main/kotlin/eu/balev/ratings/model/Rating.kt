@@ -1,4 +1,4 @@
-package eu.balev.ratings.domain
+package eu.balev.ratings.model
 
 import javax.persistence.*
 import javax.validation.constraints.Max
@@ -9,13 +9,10 @@ import javax.validation.constraints.Size
 @Table(name = "rating")
 data class Rating(
 
-        @Column(nullable = false)
-        @Min(0)
-        @Max(5)
+        @get: [Column(nullable = false) Min(0) Max(5)]
         val rating: Int,
 
-        @Column(nullable = false)
-        @Size(max = 20)
+        @get: [Column(nullable = false) Size(max = 255)]
         val comment: String
 ) {
         @Id

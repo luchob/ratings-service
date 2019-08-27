@@ -1,14 +1,16 @@
 package eu.balev.ratings.web
 
-import eu.balev.ratings.domain.Rating
+import eu.balev.ratings.model.Rating
+import eu.balev.ratings.repository.RatingRepository
 import org.springframework.messaging.handler.annotation.SendTo
 import org.springframework.messaging.handler.annotation.MessageMapping
-import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.PutMapping
+import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RestController
+import javax.validation.Valid
 
-@Controller
-class RatingsController {
+@RestController
+class RatingsController(val ratingRepository: RatingRepository) {
 
     @MessageMapping("/ratings")
     @SendTo("/topic/ratings")
@@ -18,8 +20,9 @@ class RatingsController {
         return Rating(5, "So true!")
     }
 
-    @PostMapping
-    fun createRating(rating: Rating) {
+    @PostMapping("/ratings")
+    fun createRating(@Valid @RequestBody rating: Rating) {
+        this.ratingRepository.save(rating);
         println(rating)
     }
 }
