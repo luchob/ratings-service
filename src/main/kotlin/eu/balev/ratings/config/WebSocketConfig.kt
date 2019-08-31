@@ -6,18 +6,19 @@ import org.springframework.messaging.simp.config.MessageBrokerRegistry
 import org.springframework.web.socket.config.annotation.EnableWebSocketMessageBroker
 import org.springframework.web.socket.config.annotation.StompEndpointRegistry
 
-
-
 @Configuration
 @EnableWebSocketMessageBroker
 class WebSocketConfig : WebSocketMessageBrokerConfigurer {
 
     override fun configureMessageBroker(config: MessageBrokerRegistry) {
-        config.enableSimpleBroker("/topic")
-        config.setApplicationDestinationPrefixes("/app")
+        config.
+                setApplicationDestinationPrefixes("/app").
+                enableSimpleBroker("/ratings")
     }
 
     override fun registerStompEndpoints(registry: StompEndpointRegistry) {
-        registry.addEndpoint("/ratings").withSockJS()
+        registry.addEndpoint("/socket")
+                .setAllowedOrigins("*")
+                .withSockJS();
     }
 }
