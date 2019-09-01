@@ -14,3 +14,6 @@ spring:
     hibernate:
       ddl-auto: update
       use-new-id-generator-mappings: false
+
+logging.level:
+  eu.balev: DEBUG
