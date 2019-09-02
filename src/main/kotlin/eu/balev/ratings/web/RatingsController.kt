@@ -18,14 +18,6 @@ class RatingsController(val ratingRepository: RatingRepository,
         private val LOGGER = LoggerFactory.getLogger(RatingsController::class.java)
     }
 
-    @MessageMapping("/ratings")
-    @SendTo("/topic/ratings")
-    @Throws(Exception::class)
-    fun ratings(): Rating {
-        Thread.sleep(1000) // simulated delay
-        return Rating(5, "So true!")
-    }
-
     @PostMapping("/ratings")
     fun createRating(@Valid @RequestBody rating: Rating) {
 
