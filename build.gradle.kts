@@ -8,18 +8,23 @@ plugins {
 }
 
 group = "eu.balev"
-version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {
 	mavenCentral()
 }
 
+extra.apply {
+	set("mysqlConnectorVersion", "8.0.17")
+}
+
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.springframework.boot:spring-boot-starter-websocket")
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-	runtime("mysql:mysql-connector-java:6.0.6")
+
+	implementation("org.liquibase:liquibase-core")
+	runtime("mysql:mysql-connector-java:${extra.get("mysqlConnectorVersion")}")
 
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")

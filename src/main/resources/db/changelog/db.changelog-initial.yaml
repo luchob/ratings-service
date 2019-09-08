@@ -1,0 +1,24 @@
+databaseChangeLog:
+  - changeSet:
+      id: rating-table
+      author: lachezar.balev@gmail.com
+      changes:
+        - createTable:
+            tableName: rating
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: rating
+                  type: int
+                  constraints:
+                    nullable: false
+                    unique: false
+              - column:
+                  name: comment
+                  type: varchar(255)
