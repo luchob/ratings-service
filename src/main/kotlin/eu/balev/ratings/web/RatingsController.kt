@@ -30,4 +30,5 @@ class RatingsController(val ratingRepository: RatingRepository,
     LOGGER.debug("Get all ratings...");
     return this.ratingRepository.findAll()
   }
+
 }
