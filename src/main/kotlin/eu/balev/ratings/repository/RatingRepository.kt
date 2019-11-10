@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository
 
 @Repository
 interface RatingRepository : CrudRepository<Rating, Int> {
+
+  fun findAllByIdAfterOrderById(ratingId: Int): List<Rating>
 }

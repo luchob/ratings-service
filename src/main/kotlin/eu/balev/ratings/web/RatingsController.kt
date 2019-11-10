@@ -25,10 +25,10 @@ class RatingsController(val ratingRepository: RatingRepository,
     this.ratingService.sendRating(rating)
   }
 
-  @GetMapping("/ratings")
-  fun getRatings(): Iterable<Rating> {
-    LOGGER.debug("Get all ratings...");
-    return this.ratingRepository.findAll()
+  @GetMapping("/ratings/{lastRatingId}")
+  fun getRatings(@PathVariable("lastRatingId") lastRatingId: Int): Iterable<Rating> {
+    LOGGER.debug("Get all ratings after rating: {}.", lastRatingId);
+    return this.ratingRepository.findAllByIdAfterOrderById(lastRatingId)
   }
 
 }
