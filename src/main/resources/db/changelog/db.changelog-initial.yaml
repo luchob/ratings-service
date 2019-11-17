@@ -1,7 +1,7 @@
 databaseChangeLog:
   - changeSet:
       id: rating-table
-      author: lachezar.balev@gmail.com
+      author: Lachezar Balev
       changes:
         - createTable:
             tableName: rating

@@ -1,0 +1,12 @@
+databaseChangeLog:
+  - changeSet:
+      id: encoding
+      author: Lachezar Balev
+      changes:
+        - sql:
+            comment: Do not do that, this is just a patch for educational reasons. Better fix your MySQL image.
+            dbms: mysql
+            endDelimiter: \n
+            splitStatements: true
+            sql: ALTER TABLE rating CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci
+            stripComments: true

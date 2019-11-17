@@ -8,7 +8,7 @@ plugins {
 	kotlin("plugin.jpa") version "1.3.41"
 }
 
-group = "eu.balev"
+group = "com.java2days"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 repositories {

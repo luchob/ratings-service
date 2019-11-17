@@ -1,8 +1,8 @@
-package eu.balev.ratings.web
+package com.java2days.ratings.web
 
-import eu.balev.ratings.model.Rating
-import eu.balev.ratings.repository.RatingRepository
-import eu.balev.ratings.service.RatingsService
+import com.java2days.ratings.model.Rating
+import com.java2days.ratings.repository.RatingRepository
+import com.java2days.ratings.service.RatingsService
 import org.slf4j.LoggerFactory
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid

@@ -1,4 +1,4 @@
-package eu.balev.ratings.model
+package com.java2days.ratings.model
 
 import javax.persistence.*
 import javax.validation.constraints.Max

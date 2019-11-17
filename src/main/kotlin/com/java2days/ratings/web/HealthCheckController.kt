@@ -1,4 +1,4 @@
-package eu.balev.ratings.web
+package com.java2days.ratings.web
 
 import org.springframework.http.ResponseEntity
 import org.springframework.http.ResponseEntity.ok

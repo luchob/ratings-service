@@ -1,4 +1,4 @@
-package eu.balev.ratings.config
+package com.java2days.ratings.config
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer

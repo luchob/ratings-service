@@ -1,3 +1,5 @@
 databaseChangeLog:
   - include:
       file: classpath:/db/changelog/db.changelog-initial.yaml
+  - include:
+      file: classpath:/db/changelog/db.changelog-encoding.yaml

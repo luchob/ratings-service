@@ -1,4 +1,4 @@
-package eu.balev.ratings
+package com.java2days.ratings
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

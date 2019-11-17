@@ -1,6 +1,6 @@
-package eu.balev.ratings.service
+package com.java2days.ratings.service
 
-import eu.balev.ratings.model.Rating
+import com.java2days.ratings.model.Rating
 import org.springframework.messaging.simp.SimpMessagingTemplate
 import org.springframework.stereotype.Service
 
