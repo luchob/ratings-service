@@ -4,19 +4,20 @@ A small base for potential talk @ Java2Days 2019
 ##How to run your service locally in Kubernetes.
 
 1.  [ Install and configure ](#minikube-install)
-2.  [ Build docker image ](#backend-image)
-3.  [ Deploy mysql ](#deploy-mysql)
-    - [ Configure with ConfigMaps ](#mysql-configure)
-    - [ Create secret to save the password ](#mysql-configure-secret)
-    - [ Deploy mysql ](#mysql-deploy)
-    - [ Create a service to make mysql visible ](#mysql-service)
+2.  [ Build docker image ](#backend-image) 
+3.  [ Deploy mysql ](#deploy-mysql) 
+    - [ Configure with ConfigMaps ](#mysql-configure) 
+    - [ Create secret to save the password ](#mysql-configure-secret) 
+    - [ Where is the data: PV and PVC ](#mysql-data) 
+    - [ Deploy mysql ](#mysql-deploy) 
+    - [ Create a service to make mysql visible ](#mysql-service) 
 4.  [ Deploy your service ](#rating-backend)
     - [ Deploy your backend service ](#rating-backend)
-    - [ Create a service to make the service visible ](#rating-service)
-5.  [ Scale ](#scale)
-6.  [ Undo deployment ](#undo)
-7.  [ Stop ](#stop)
-8.  [ Delete ](#delete)
+    - [ Create a service to make the service visible ](#rating-service) 
+5.  [ Scale ](#scale) 
+6.  [ Undo deployment ](#undo) 
+7.  [ Stop ](#stop) 
+8.  [ Delete ](#delete) 
 
 <a name="minikube-install"></a>
 ###  Minikube install and configure
@@ -55,13 +56,14 @@ minikube start
 
 
 
+<a name="deploy-mysql"></a>
 ###  Mysql configure and deploy.
-
 
 In order to connect to mysql we need configurations like: host, port, user, pass
 
 Kubernetes object ConfigMaps allow you to decouple configuration artifacts from image content to keep containerized applications portable. 
 
+<a name="mysql-configure"></a>
 **Example ConfigMaps for our mysql in file minikube-config.yaml:**
 ```
 apiVersion: v1
@@ -76,6 +78,7 @@ data:
 Apply the configuration in minikube
 ``kubectl apply -f minikube-config.yaml``
 
+<a name="mysql-configure-secret"></a>
 Kubernetes secret objects let you store and manage sensitive information, such as passwords.
 
 Create the file `minikube-credentials.yaml`:
@@ -92,7 +95,7 @@ data:
 Apply the password configuration:
 ``kubectl apply -f minikube-credentials.yaml``
 
-
+<a name="mysql-data"></a>
 - Where is our Data?
 
 **A PersistentVolume (PV)** is a piece of storage in the cluster that has been provisioned by an administrator or dynamically provisioned using Storage Classes.
@@ -139,7 +142,7 @@ spec:
 Apply the PVC:
 `kubectl apply -f minikube-mysql-pvc.yaml`
 
-
+<a name="mysql-service"></a>
 Create a service 
 ```
 apiVersion: v1
@@ -156,7 +159,8 @@ spec:
 Apply service:
 `kubectl apply -f minikube-mysql-service.yaml`
 
-<a name="rating-backend"></a>
+
+<a name="mysql-deploy"></a>
 ### Service deployment:
 ```
 spec:
@@ -191,7 +195,7 @@ spec:
             claimName: mysql-pv-claim
 ```
 
-
+<a name="rating-backend"></a>
 Deploy ratings-service:
 `kubectl apply -f minikube-mysql-deployment.yaml`
 
@@ -245,5 +249,5 @@ spec:
 
 `kubectl apply -f minikube-backend.yaml`
 
-
+<a name="rating-service"></a>
 `kubectl apply -f minikube-backend-service.yaml`
