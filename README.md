@@ -1,7 +1,7 @@
 # ratings-service
 A small base for potential talk @ Java2Days 2019
 
-##How to run your service locally in Kubernetes.
+## How to run your service locally in Kubernetes.
 
 1.  [ Install and configure ](#minikube-install)
 2.  [ Build docker image ](#backend-image) 
